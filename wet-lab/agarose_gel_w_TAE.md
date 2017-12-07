@@ -4,7 +4,7 @@
 
 Agarose gels are run using two types of electrophoresis buffers (TAE and TBE). This protocol uses 1x TAE buffer to prepare a 1% agarose gel. Depending on the expected band sizes, you may increase or decrease the agarose concentration. For small bands, use a higher concentration and vice versa.  
 
-##### To prepare a 2% gel, double the mass of agrose; keep the final volume the same 
+##### To prepare a 2% gel, double the mass of agarose; keep the final volume the same 
 
 #### 1.1 Preparing 1% agarose gel - Small gel
 
