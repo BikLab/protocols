@@ -28,4 +28,4 @@ I. Remove the samples from the magnetic rack and air dry the beads.
 
 J. Resuspend the beads in 22 &#956;L of PCR grade water and place back on the magnetic rack for 10 mins or until all the beads are bound to one side of the tube.
 
-K. Elute 20 &#956;L of the sample into new tubes. 
+K. Elute 20 &#956;L of each sample into new tubes. 
