@@ -1,5 +1,7 @@
 # AMPure XP bead clean-up
 
+> The magnetic beads are stored at 4&deg;C and need to be at room temperature before the clean-up.
+
 A. Add 2x the sample volume of the magnetic beads to the sample. 
 
 B. Next, add 2x the sample of the PEG 8000 / 2.5M NaCl to the sample with the magnetic beads.
