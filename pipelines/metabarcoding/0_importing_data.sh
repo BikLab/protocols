@@ -24,6 +24,7 @@ OUTPUT=/bigdata/biklab/shared/memb/18S/qiime2-analysis/data-clean
 # import fastq file as Qiime2 artifact
 # The raw files must be named in the following manner sampleID_BARCODE_LANE_R*_001.fastq when importing with 
 # --source-format CasavaOneEightSingleLanePerSampleDirFmt 
+# There are others formats that can be used to import raw fastqs into Qiime2. See https://docs.qiime2.org/2018.4/tutorials/importing/ for more details.
 qiime tools import \
 --type 'SampleData[PairedEndSequencesWithQuality]' \
 --input-path $DATA_DIR/ \
