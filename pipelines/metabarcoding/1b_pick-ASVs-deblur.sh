@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name="dada2"
+#SBATCH --job-name="deblur"
 #SBATCH --partition=batch
 #SBATCH --nodes=1
 #SBATCH --ntasks=16
@@ -9,23 +9,17 @@
 #SBATCH --time=30-00:00:00
 #SBATCH --mail-user=taruna.aggarwal@ucr.edu
 #SBATCH --mail-type=END,FAIL
-#SBATCH -e dada2-%j.err
-#SBATCH -o dada2-%j.out
+#SBATCH -e deblur-%j.err
+#SBATCH -o deblur-%j.out
 
 module unload python
 module load qiime2/2017.12
 
-# set the directory containing the input Qiime 2 artifact
+# Set the directory containing the input Qiime 2 artifact
 INPUT=/bigdata/biklab/shared/memb/18S/qiime2-analysis/data-clean
 
-# set the output directory where the Qiime2 ASV table and rep seqs will be written
-OUTPUT=/bigdata/biklab/shared/memb/18S/qiime2-analysis/analysis-results/dada2
-
-
-# Set dir paths
-
-DATA_DIR=/bigdata/biklab/shared/memb/18S/data-clean/raw_fastq
-OUTPUT=/bigdata/biklab/shared/memb/18S/qiime2-analysis/data-clean
+# Set the output directory where the Qiime2 ASV table and rep seqs will be written
+OUTPUT=/bigdata/biklab/shared/memb/18S/qiime2-analysis/analysis-results/deblur
 
 # run dada2 on the imported qza
 

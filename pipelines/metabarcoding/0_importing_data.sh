@@ -15,13 +15,13 @@
 module unload python
 module load qiime2/2017.12
 
-# set the directory containing the input raw reads.
+# Set the directory containing the input raw reads.
 DATA_DIR=/bigdata/biklab/shared/memb/18S/data-clean/raw_fastq
 
-# set the output directory where the Qiime2 artifact will be written
+# Set the output directory where the Qiime2 artifact will be written
 OUTPUT=/bigdata/biklab/shared/memb/18S/qiime2-analysis/data-clean
 
-# import fastq file as Qiime2 artifact
+# Import fastq file as Qiime2 artifact
 # The raw files must be named in the following manner sampleID_BARCODE_LANE_R*_001.fastq when importing with 
 # --source-format CasavaOneEightSingleLanePerSampleDirFmt 
 # There are others formats that can be used to import raw fastqs into Qiime2. See https://docs.qiime2.org/2018.4/tutorials/importing/ for more details.
@@ -30,3 +30,10 @@ qiime tools import \
 --input-path $DATA_DIR/ \
 --source-format CasavaOneEightSingleLanePerSampleDirFmt \
 --output-path $OUTPUT/memb1-demux-PE-reads.qza
+
+
+
+# Summarize and visualize the qza. 
+qiime demux summarize \
+--i-data $OUTPUT/memb1-demux-PE-reads.qza \
+--o-visualization $OUTPUT/memb1-demux-PE-reads.qzv

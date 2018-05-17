@@ -15,20 +15,14 @@
 module unload python
 module load qiime2/2017.12
 
-# set the directory containing the input Qiime 2 artifact
+# Set the directory containing the input Qiime 2 artifact
 INPUT=/bigdata/biklab/shared/memb/18S/qiime2-analysis/data-clean
 
-# set the output directory where the Qiime2 ASV table and rep seqs will be written
+# Set the output directory where the Qiime2 ASV table and rep seqs will be written
 OUTPUT=/bigdata/biklab/shared/memb/18S/qiime2-analysis/analysis-results/dada2
 
-
-# Set dir paths
-
-DATA_DIR=/bigdata/biklab/shared/memb/18S/data-clean/raw_fastq
-OUTPUT=/bigdata/biklab/shared/memb/18S/qiime2-analysis/data-clean
-
-# run dada2 on the imported qza
-
+# Run dada2 on the imported qza
+# The user defines the trimming parameters after visualizing the imported raw reads 
 qiime dada2 denoise-paired \
 --i-demultiplexed-seqs $INPUT/memb1-demux-PE-reads.qza \
 --p-trim-left-f 10 \
