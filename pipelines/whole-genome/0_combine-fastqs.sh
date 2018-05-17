@@ -13,13 +13,11 @@
 
 IN="/bigdata/biklab/shared/bitmab2-whole-genomes/data-raw/Set1"
 
-for dir in $IN/*;
-	do
-		cd $dir;
-			for f in $(ls);
-			do 
-				fbname=$(basename $f | cut -d "R" -f 1 -);
-				zcat *R1* > ${fbname}R1.fastq;
-				zcat *R2* > ${fbname}R2.fastq;
-			done
-	done		
+for dir in $(ls $IN)
+do
+    if [ $(ls $dir |grep "R1" | wc -l) -gt 1 ]; then
+       fbname=$(basename $dir)
+       zcat $dir/*R1* > $dir/$fbname.r1.fastq
+       zcat $dir/*R2* > $dir/$fbname.r2.fastq
+    fi
+done
