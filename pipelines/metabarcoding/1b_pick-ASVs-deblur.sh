@@ -12,23 +12,29 @@
 #SBATCH -e deblur-%j.err
 #SBATCH -o deblur-%j.out
 
-module unload python
-module load qiime2/2017.12
+export LC_ALL=en_US.utf-8
+export LANG=en_US.utf-8
+#module load python
+source activate qiime2-2018.6
+
 
 # Set the directory containing the input Qiime 2 artifact
-INPUT=/bigdata/biklab/shared/memb/18S/qiime2-analysis/data-clean
+INPUT=/bigdata/biklab/shared/memb/16S/qiime2-analysis/data-clean
 
 # Set the output directory where the Qiime2 ASV table and rep seqs will be written
-OUTPUT=/bigdata/biklab/shared/memb/18S/qiime2-analysis/analysis-results/deblur
+OUTPUT=/bigdata/biklab/shared/memb/16S/qiime2-analysis/analysis-results/deblur
+STATS=/bigdata/biklab/shared/memb/16S/qiime2-analysis/analysis-results/deblur-stats
+# quality filter sequences
 
-# run dada2 on the imported qza
+qiime quality-filter q-score \
+--i-demux $INPUT/memb1-demux-PE-reads.qza \
+ --o-filtered-sequences $OUTPUT/memb1-demux-PE-reads-filtered.qza \
+ --o-filter-stats $STATS/memb1-demux-PE-reads-filtered-stats.qza
 
-qiime dada2 denoise-paired \
---i-demultiplexed-seqs $INPUT/memb1-demux-PE-reads.qza \
---p-trim-left-f 10 \
---p-trim-left-r 10 \
---p-trunc-len-f 250 \
---p-trunc-len-r 250 \
---p-n-threads 12 \
---o-representative-sequences $OUTPUT/dada2-rep-seqs.qza \
---o-table $OUTPUT/dada2-table.qza
+qiime deblur denoise-16S \
+--i-demultiplexed-seqs $OUTPUT/memb1-demux-PE-reads-filtered.qza \
+--p-sample-stats \
+--p-trim-length 250 \
+--o-representative-sequences $OUTPUT/deblur-rep-seqs.qza \
+--o-table $OUTPUT/deblur-table.qza \
+--output-dir /bigdata/biklab/shared/memb/16S/qiime2-analysis/analysis-results/deblur
